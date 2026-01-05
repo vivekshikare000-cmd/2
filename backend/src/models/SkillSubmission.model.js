@@ -26,7 +26,7 @@ const skillSubmissionSchema = new mongoose.Schema(
         required: true,
       },
     ],
-
+//status
     status: {
       type: String,
       enum: ["submitted", "under_review", "verified", "rejected"],
