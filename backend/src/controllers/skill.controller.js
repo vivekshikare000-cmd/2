@@ -33,3 +33,22 @@ export const createSkillSubmission = async (req, res) => {
     });
   }
 };
+export const getMySkillSubmissions = async (req, res) => {
+  try {
+    // TEMP: hardcoded user (JWT will replace this)
+    const userId = "000000000000000000000000";
+
+    const submissions = await SkillSubmission.find({ userId })
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      data: submissions,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch submissions",
+    });
+  }
+};
