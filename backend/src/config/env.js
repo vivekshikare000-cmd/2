@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// List of required env variables
 const requiredEnvVars = [
   "PORT",
   "MONGO_URI",
@@ -13,6 +14,7 @@ const requiredEnvVars = [
   "SUPER_ADMIN_EMAIL"
 ];
 
+// Validate all required env variables
 requiredEnvVars.forEach((key) => {
   if (!process.env[key]) {
     console.error(`❌ Missing required env variable: ${key}`);
@@ -20,8 +22,15 @@ requiredEnvVars.forEach((key) => {
   }
 });
 
+// Convert PORT safely to number
+const port = Number(process.env.PORT);
+if (!Number.isInteger(port) || port < 0 || port > 65535) {
+  console.error(`❌ Invalid PORT value: ${process.env.PORT}`);
+  process.exit(1);
+}
+
 const env = {
-  port: process.env.PORT,
+  port, // ✅ Now guaranteed to be a number
   mongoUri: process.env.MONGO_URI,
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN,
