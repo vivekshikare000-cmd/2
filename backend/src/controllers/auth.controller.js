@@ -1,12 +1,7 @@
 import User from "../models/User.model.js";
-import { hashPassword, validatePasswordStrength } from "../services/password.service.js";
+import { hashPassword, validatePasswordStrength, verifyPassword } from "../services/password.service.js";
 import { createOTP, verifyOTP } from "../services/otp.service.js";
 import { sendOTPEmail } from "../services/email.service.js";
-import { generateAccessToken } from "../services/jwt.service.js";
-import { verifyPassword } from "../services/password.service.js";
-import { createOTP } from "../services/otp.service.js";
-import { sendOTPEmail } from "../services/email.service.js";
-import { verifyOTP } from "../services/otp.service.js";
 import { generateAccessToken } from "../services/jwt.service.js";
 
 /**
