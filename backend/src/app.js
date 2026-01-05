@@ -1,14 +1,20 @@
 // src/app.js
 import express from "express";
 import feedRoutes from "./routes/feed.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 const app = express();
 
-// Global middlewares
+app.use(express.json());
+
 
 app.use("/api/feed", feedRoutes);
 
 
+app.use("/api/auth", authRoutes);
 
-app.use(express.json());
+
+// Global middlewares
+
+app.use("/api/feed", feedRoutes);
 
 export default app;
