@@ -22,7 +22,7 @@ const skillSubmissionSchema = new mongoose.Schema(
 
     evidenceLinks: [
       {
-        type: String, // video, github, drive link
+        type: String, // video, github, drive link (all links)
         required: true,
       },
     ],
