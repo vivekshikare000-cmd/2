@@ -13,10 +13,9 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
+      unique: true, // 👈 single source of truth
       lowercase: true,
-      trim: true,
-      index: true
+      trim: true
     },
 
     passwordHash: {
@@ -41,7 +40,6 @@ const userSchema = new mongoose.Schema(
       default: "pending"
     },
 
-    // Role-specific containers (future-safe)
     studentProfile: {
       skills: [String],
       education: String,
@@ -62,8 +60,5 @@ const userSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-
-// Prevent duplicate emails at DB level
-userSchema.index({ email: 1 }, { unique: true });
 
 export default mongoose.model("User", userSchema);
