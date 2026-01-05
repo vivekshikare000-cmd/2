@@ -6,7 +6,12 @@ const app = express();
 
 app.use(express.json());
 
+
+app.use("/api/feed", feedRoutes);
+
+
 app.use("/api/auth", authRoutes);
+
 
 // Global middlewares
 
